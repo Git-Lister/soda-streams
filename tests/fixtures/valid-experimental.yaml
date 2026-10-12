@@ -1,0 +1,10 @@
+name: "Colour Palette Generator"
+slug: "colour-palette-generator"
+author: "Git-Lister"
+tier: "experimental"
+discipline:
+  - "fine-art"
+description: "Experimental palette generation from reference images."
+version: "0.0.1"
+licence: "CC-BY-4.0"
+provenance: {}

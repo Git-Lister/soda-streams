@@ -1,0 +1,9 @@
+slug: "missing-name"
+author: "Git-Lister"
+tier: "community"
+discipline:
+  - "games"
+description: "Missing the required `name` field."
+version: "1.0.0"
+licence: "MIT"
+provenance: {}

@@ -1,5 +1,21 @@
 # Development Log
 
+## 2026-10-12 — Brick 2: Metadata schema and validator
+
+**Built:** JSON Schema for workflow metadata, Python validator
+(validate.py, validate_all.py), 10 test fixtures, and full test suite
+for the validator.
+
+**Learned:** The placeholder skipping mechanism is critical — it lets the
+validator run on a partially populated repo without false positives. The
+JSON Schema pattern for semantic versioning is stricter than expected
+(rejects "1.0" without patch). The discipline enum must exactly match
+the BLUEPRINT list.
+
+**Changed:** None — implementation follows the spec exactly.
+
+**Next:** Brick 3 (launcher CLI).
+
 ## 2026-10-12 — Brick 1b: Full repository scaffold
 
 **Built:** Placeholder files across the entire target repository tree.

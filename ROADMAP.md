@@ -4,9 +4,9 @@
 - [x] Provenance infrastructure
 - [x] Repository skeleton
 - [x] Full repository scaffold
+- [x] Metadata schema
 
 ## Next
-- [ ] Metadata schema
 - [ ] Launcher CLI
 - [ ] ComfyUI workflow
 - [ ] RAG workflow

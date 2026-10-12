@@ -421,3 +421,7 @@ feat(tools): add metadata schema and validator
 
 Generated with OpenCode (Nemotron 3 Ultra)
 Prompt: prompts/brick-02-metadata-schema/01-initial-prompt.md
+
+## Actual Output
+
+Created full JSON Schema for workflow metadata (tools/validators/schema.json) with all required fields, enums, patterns, and nested objects per BLUEPRINT §3. Implemented validate.py with load_schema, is_placeholder, validate_file, and validate_all functions including placeholder skipping, YAML parsing, and jsonschema validation with JSON Pointer error paths. Implemented validate_all.py CLI wrapper with formatted output and proper exit codes. Created 10 test fixtures in tests/fixtures/ covering valid (curated, community, experimental), placeholder, and 6 invalid cases. Wrote comprehensive test suite (~15 tests) in tests/test_metadata_validation.py covering all required test classes. Updated DEVLOG.md and ROADMAP.md. All verification commands pass.

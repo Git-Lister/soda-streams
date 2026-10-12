@@ -1,0 +1,10 @@
+name: "Bad Tier"
+slug: "bad-tier"
+author: "Git-Lister"
+tier: "super-curated"
+discipline:
+  - "games"
+description: "Tier is not one of the allowed values."
+version: "1.0.0"
+licence: "MIT"
+provenance: {}

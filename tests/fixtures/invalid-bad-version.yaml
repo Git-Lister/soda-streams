@@ -1,0 +1,10 @@
+name: "Bad Version"
+slug: "bad-version"
+author: "Git-Lister"
+tier: "community"
+discipline:
+  - "games"
+description: "Version is not semantic."
+version: "1.0"
+licence: "MIT"
+provenance: {}

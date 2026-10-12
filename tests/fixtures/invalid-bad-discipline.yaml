@@ -1,0 +1,10 @@
+name: "Bad Discipline"
+slug: "bad-discipline"
+author: "Git-Lister"
+tier: "community"
+discipline:
+  - "basket-weaving"
+description: "Discipline tag is not in the allowed set."
+version: "1.0.0"
+licence: "MIT"
+provenance: {}

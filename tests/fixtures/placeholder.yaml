@@ -1,0 +1,13 @@
+# PLACEHOLDER — test fixture. This file should be skipped by the validator.
+# The first non-blank line is the marker.
+
+name: "Placeholder"
+slug: "placeholder"
+author: "test"
+tier: "experimental"
+discipline:
+  - "games"
+description: "Should never be validated."
+version: "0.0.1"
+licence: "MIT"
+provenance: {}

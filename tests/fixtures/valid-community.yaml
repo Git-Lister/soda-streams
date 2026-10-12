@@ -1,0 +1,10 @@
+name: "Storyboard Sketcher"
+slug: "storyboard-sketcher"
+author: "Git-Lister"
+tier: "community"
+discipline:
+  - "filmmaking"
+description: "Generate rough storyboard frames from a script excerpt."
+version: "0.1.0"
+licence: "MIT"
+provenance: {}

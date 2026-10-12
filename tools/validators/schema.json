@@ -1,8 +1,298 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$comment": "PLACEHOLDER — filled in Brick 2.",
+  "$id": "https://github.com/Git-Lister/soda-streams/tools/validators/schema.json",
   "title": "Soda-Streams workflow metadata",
   "type": "object",
-  "required": [],
-  "properties": {}
+  "required": [
+    "name",
+    "slug",
+    "author",
+    "tier",
+    "discipline",
+    "description",
+    "version",
+    "licence",
+    "provenance"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable name of the workflow"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Directory-safe identifier (kebab-case)"
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Primary author (name or handle)"
+    },
+    "contributors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Additional contributors",
+      "default": []
+    },
+    "tier": {
+      "type": "string",
+      "enum": [
+        "curated",
+        "community",
+        "experimental"
+      ],
+      "description": "Workflow tier"
+    },
+    "discipline": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "filmmaking",
+          "games",
+          "vr",
+          "animation",
+          "audio",
+          "fine-art",
+          "research",
+          "teaching"
+        ]
+      },
+      "minItems": 1,
+      "description": "Discipline tags"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One-paragraph summary (what it does, who it's for)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$",
+      "description": "Semantic version (MAJOR.MINOR.PATCH)"
+    },
+    "licence": {
+      "type": "string",
+      "enum": [
+        "MIT",
+        "CC-BY-4.0",
+        "Apache-2.0",
+        "GPL-3.0",
+        "proprietary"
+      ],
+      "description": "SPDX licence identifier or proprietary"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "version",
+          "source",
+          "licence"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "licence": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      },
+      "default": [],
+      "description": "Named tools the workflow uses"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "pip-style dependencies (for Python workflows)"
+    },
+    "entry_point": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Entry point: 'module:function', 'workflow.json', or 'script.sh'"
+    },
+    "runtime": {
+      "type": "string",
+      "enum": [
+        "python",
+        "docker",
+        "shell"
+      ],
+      "default": "python",
+      "description": "Runtime type"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "source",
+              "licence",
+              "training_data"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "licence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "training_data": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": [],
+          "description": "AI models used in the workflow"
+        },
+        "datasets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "name",
+              "source",
+              "licence"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source": {
+                "type": "string",
+                "minLength": 1
+              },
+              "licence": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": [],
+          "description": "Custom datasets used"
+        },
+        "ai_assistance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "tool",
+              "role"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "minLength": 1
+              },
+              "role": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          },
+          "default": [],
+          "description": "AI assistance used to create the workflow"
+        }
+      },
+      "additionalProperties": false
+    },
+    "related_workflows": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "Slugs of related workflows"
+    },
+    "risk_assessment": {
+      "type": "string",
+      "description": "Path to risk assessment doc (for curated tier)"
+    },
+    "output_examples": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": [],
+      "description": "Paths to example outputs"
+    },
+    "readiness": {
+      "type": "object",
+      "properties": {
+        "documentation": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "testing": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "provenance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        }
+      },
+      "additionalProperties": false,
+      "description": "Optional self-assessment (1-5 scale)"
+    },
+    "created": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 creation date"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 last update date"
+    },
+    "contributor_handle": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Git handle of primary author"
+    }
+  },
+  "additionalProperties": false
 }
