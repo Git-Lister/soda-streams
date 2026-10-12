@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venvs/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Models
+*.safetensors
+*.ckpt
+*.pth
+/models/
+
+# Data
+/data/
+*.db
+.chroma/
+
+# Logs (except README)
+/logs/**
+!/logs/README.md
+!/logs/opencode/README.md
+
+# Secrets
+.env
+.env.*
+secrets/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
