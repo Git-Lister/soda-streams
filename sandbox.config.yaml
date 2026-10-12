@@ -1,0 +1,24 @@
+llm:
+  provider: "ollama"                    # ollama | openai | anthropic | groq | custom
+  model: "llama3.2:3b"
+  base_url: "http://localhost:11434"    # for local/custom providers
+  api_key_env: "SANDBOX_LLM_API_KEY"    # for cloud providers
+  temperature: 0.3
+  max_tokens: 2048
+
+assistant:
+  enabled: true
+  grounding: true                       # if true, only answers from repo contents
+  allow_external: false                 # if false, blocks cloud providers
+  log_queries: true                     # for transparency
+  log_path: "./logs/assistant/"
+
+embeddings:
+  model: "all-MiniLM-L6-v2"            # local, no API
+  vector_store: "chromadb"              # local
+  persist_path: "./.chroma/"
+
+# Institutional override (environment variables take precedence)
+# SANDBOX_FORCE_LOCAL=true        — blocks all external providers
+# SANDBOX_DISABLE_ASSISTANT=true  — disables assistant entirely
+# SANDBOX_ADMIN_MODE=true         — allows admin to lock config

@@ -2,9 +2,9 @@
 
 ## Built
 - [x] Provenance infrastructure
+- [x] Repository skeleton
 
 ## Next
-- [ ] Repository skeleton
 - [ ] Metadata schema
 - [ ] Launcher CLI
 - [ ] ComfyUI workflow
