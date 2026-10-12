@@ -1,0 +1,17 @@
+{
+  "model": "opencode/nemotron-3-ultra-free",
+  "temperature": 0.2,
+  "max_tokens": 8192,
+  "permissions": {
+    "edit": "ask",
+    "bash": "ask",
+    "webfetch": "allow"
+  },
+  "agents": {
+    "default": {
+      "model": "opencode/nemotron-3-ultra-free",
+      "temperature": 0.2,
+      "steps": 25
+    }
+  }
+}

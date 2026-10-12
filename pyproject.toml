@@ -1,0 +1,16 @@
+[project]
+name = "soda-streams"
+version = "0.1.0"
+description = "A shared repository of AI workflows and processes — by SODA, for SODA"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
