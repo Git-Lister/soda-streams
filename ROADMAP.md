@@ -3,6 +3,7 @@
 ## Built
 - [x] Provenance infrastructure
 - [x] Repository skeleton
+- [x] Full repository scaffold
 
 ## Next
 - [ ] Metadata schema

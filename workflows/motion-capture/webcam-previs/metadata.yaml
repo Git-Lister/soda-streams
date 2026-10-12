@@ -1,0 +1,11 @@
+# PLACEHOLDER — filled in Brick 7.
+# The metadata validator (Brick 2) will skip files whose first line is
+# `# PLACEHOLDER`.
+
+name: "Webcam Previs"
+slug: "webcam-previs"
+tier: "experimental"
+discipline: []
+description: "Placeholder — to be documented in Brick 7."
+version: "0.0.1"
+licence: "MIT"

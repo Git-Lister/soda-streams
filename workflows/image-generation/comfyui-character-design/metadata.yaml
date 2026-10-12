@@ -1,0 +1,11 @@
+# PLACEHOLDER — filled in Brick 4.
+# The metadata validator (Brick 2) will skip files whose first line is
+# `# PLACEHOLDER`.
+
+name: "ComfyUI Character Design"
+slug: "comfyui-character-design"
+tier: "experimental"
+discipline: []
+description: "Placeholder — to be documented in Brick 4."
+version: "0.0.1"
+licence: "MIT"

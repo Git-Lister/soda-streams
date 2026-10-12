@@ -1,0 +1,19 @@
+# PLACEHOLDER — full pipeline filled in Brick 10.
+# Currently runs a no-op check on push so the Actions tab isn't empty.
+
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  placeholder:
+    name: Placeholder (Brick 10 expands this)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Note
+        run: echo "Full validation pipeline arrives in Brick 10."
