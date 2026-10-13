@@ -1,11 +1,46 @@
-# PLACEHOLDER — filled in Brick 5.
-# The metadata validator (Brick 2) will skip files whose first line is
-# `# PLACEHOLDER`.
-
 name: "RAG Research Assistant"
 slug: "rag-research-assistant"
-tier: "experimental"
-discipline: []
-description: "Placeholder — to be documented in Brick 5."
-version: "0.0.1"
+author: "Git-Lister"
+tier: "curated"
+discipline:
+  - "research"
+  - "teaching"
+description: "Ingest a folder of PDFs into a local vector index and query with grounded answers that cite sources. Runs offline."
+version: "1.0.0"
 licence: "MIT"
+tools:
+  - name: "ChromaDB"
+    version: ">=0.4.0"
+    source: "https://github.com/chroma-core/chroma"
+    licence: "Apache-2.0"
+  - name: "sentence-transformers"
+    version: ">=2.2.0"
+    source: "https://github.com/UKPLab/sentence-transformers"
+    licence: "Apache-2.0"
+  - name: "Ollama"
+    version: ">=0.1.0"
+    source: "https://github.com/ollama/ollama"
+    licence: "MIT"
+  - name: "pypdf"
+    version: ">=4.0.0"
+    source: "https://github.com/py-pdf/pypdf"
+    licence: "BSD-3-Clause"
+dependencies:
+  - "chromadb>=0.4.0"
+  - "sentence-transformers>=2.2.0"
+  - "pypdf>=4.0.0"
+  - "ollama>=0.1.0"
+entry_point: "workflow.py:main"
+runtime: "python"
+provenance:
+  models:
+    - name: "all-MiniLM-L6-v2"
+      source: "sentence-transformers"
+      licence: "Apache-2.0"
+      training_data: "1B sentence pairs (see model card)"
+  ai_assistance:
+    - tool: "OpenCode (Nemotron 3 Ultra)"
+      role: "code generation"
+created: "2026-10-13"
+updated: "2026-10-13"
+contributor_handle: "Git-Lister"

@@ -1,5 +1,21 @@
 # Development Log
 
+## 2026-10-13 — Brick 5: RAG research assistant workflow
+
+**Built:** Second content workflow. PDF ingestion, chunking, embedding
+(sentence-transformers), storage (ChromaDB), retrieval, and Ollama-backed
+generation with citations.
+
+**Learned:** Lazy imports are essential for heavy dependencies —
+sentence_transformers pulls in PyTorch, chromadb has its own overhead.
+Putting them inside embed_and_store and retrieve lets tests run without
+the full stack. The Chunk dataclass carrying source/page/chunk_id makes
+citation reconstruction trivial.
+
+**Changed:** None — implementation follows the spec exactly.
+
+**Next:** Brick 6 (voice synthesis workflow).
+
 ## 2026-10-13 — Brick 4: ComfyUI character design workflow
 
 **Built:** First content workflow. ComfyUI + SDXL character design with

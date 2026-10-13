@@ -7,10 +7,10 @@
 - [x] Metadata schema
 - [x] Launcher CLI
 - [x] ComfyUI workflow
+- [x] RAG workflow
 
 ## Next
-- [ ] RAG workflow
-- [ ] RAG workflow
+- [ ] Audio workflow
 - [ ] Audio workflow
 - [ ] MediaPipe workflow
 - [ ] LLM assistant
