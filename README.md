@@ -1,81 +1,87 @@
+
 # Soda-Streams
 
-> A shared repository of AI workflows and processes — by SODA, for SODA —
-> that makes sincere experimentation possible across teaching, research,
+> An open, versioned repository of AI workflows and processes that
+> makes sincere experimentation possible across teaching, research,
 > and knowledge exchange.
 
-## Vision
+## The problem
 
-SODA has the culture, the people, and the infrastructure for creative
-technology. It has VR labs, virtual production studios, motion capture,
-and a community of staff and students who are already experimenting with AI.
+Creative technology disciplines already have the infrastructure —
+studios, labs, capture spaces, exhibition spaces — and the community
+that knows how to use it. What they often lack is **connective tissue**:
+a way to share the *processes* that make the work happen, not just
+the outputs.
 
-What's missing is the **connective tissue** — a way to share *processes*,
-not just outputs. Right now, if a student figures out a ComfyUI workflow
-for character design, that knowledge lives in their head, in a Discord
-message, or in a file on their laptop. It doesn't become part of SODA's
-shared capability.
+A student figures out a ComfyUI workflow for character design. A
+lecturer builds a RAG pipeline for research. A researcher trains a
+webcam-based motion capture model. Each is real, useful, hard-won.
+But the knowledge lives in a head, in a chat message, in a folder on
+a laptop. It doesn't become part of the community's shared capability.
 
-AI is the connective tissue. Soda-Streams is the repository that makes it
-visible, versioned, and co-creatable. It's not a platform. It's not a
-service. It's a convention — a way of working that makes SODA's AI practice
-legible and shareable.
+Soda-Streams is the connective tissue.
 
-## Quick Start
-> **Note:** The `sandbox` CLI commands below are the target interface, coming in Brick 3. Until then, browse workflows by reading their `README.md` files directly.
-### Prerequisites
+## What it is
 
-- Python 3.11+
-- Git
-- (Optional) Ollama for local LLM inference
+Soda-Streams is a repository of **workflows** — not outputs, not
+prompts, not screenshots. A workflow is a complete, runnable thing:
+the code, the metadata, the provenance, the guidance. The unit of
+content is the *process*, not the product.
 
-### Installation
+Every workflow lives in its own folder:
 
-```bash
-git clone https://github.com/Git-Lister/soda-streams.git
-cd soda-streams
-python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-pip install -r requirements-dev.txt
+```
+workflows/
+└── image-generation/
+    └── comfyui-character-design/
+        ├── README.md          # What it does, who it's for, how to run it
+        ├── metadata.yaml      # Tools, dependencies, provenance
+        ├── guide.md           # Discipline-specific adaptation
+        ├── workflow.py        # The workflow itself
+        └── examples/          # Sample outputs
 ```
 
-### Browse Workflows
+When you browse the repository, you're browsing recipes. When you
+fork a workflow, you're adapting a recipe. When you contribute your
+own, you're adding a recipe others can build on. The repository grows
+by accretion, from the work already happening.
 
-```bash
-# List all workflows
-python -m tools.sandbox.cli list
+## What it isn't
 
-# List curated workflows only
-python -m tools.sandbox.cli list --tier curated
+- It isn't a platform or a service. It's a repository and a convention.
+- It isn't a replacement for institutional AI tools. It's a specialist
+  complement for creative, discipline-specific work.
+- It isn't a physical space. It's a shared working environment.
+- It isn't a collection of outputs. It's a collection of processes.
+- It isn't top-down. It's built by its community, for its community.
+- It isn't proprietary. Open-source first, pragmatic about paid tools.
 
-# List by discipline
-python -m tools.sandbox.cli list --discipline games
-```
+## Design principles
 
-### Run a Workflow
+- **Porous edges.** Low-friction access. Git-based contribution. No
+  maze of permissions. Anyone in the community can browse, run, and
+  fork a workflow without asking.
+- **Defined boundaries.** A metadata schema. A three-tier system. A
+  governance framework. Not to prevent exploration, but to make it safe.
+- **Prepared cleanup.** Provenance tracking. Incident response. Clear
+  escalation paths. We expect some sand to fall outside the box — the
+  question is whether we're ready when it does.
+- **Make the meal, not the menu.** Every workflow is a complete,
+  runnable thing — not a tutorial, not a diagram, not a link to a tool.
+  The user can run it, modify it, and extend it.
 
-```bash
-# Show workflow info
-python -m tools.sandbox.cli info comfyui-character-design
+## Three-tier system
 
-# Run a workflow
-python -m tools.sandbox.cli run comfyui-character-design
+All workflows live on `main`. Tiers are metadata fields and Git
+labels — not branches.
 
-# Run with UI (if available)
-python -m tools.sandbox.cli run comfyui-character-design --ui
-```
+| Tier | Reviewed | Supported | Who governs |
+|---|---|---|---|
+| **Curated** | Yes — reviewed for safety, licensing, and provenance | Yes | Community maintainers |
+| **Community** | No — metadata validated only | Best-effort | Contributors |
+| **Experimental** | No | No | No one |
 
-### Validate Metadata
-
-```bash
-# Validate a specific metadata.yaml
-python -m tools.sandbox.cli validate workflows/image-generation/comfyui-character-design/metadata.yaml
-
-# Validate all workflows
-python tools/validators/validate_all.py
-```
-
-## Repository Structure
+## Repository structure
 
 ```
 soda-streams/
@@ -88,32 +94,26 @@ soda-streams/
 ├── sandbox.config.yaml          # LLM + runtime configuration
 ├── DEVLOG.md                    # Development narrative
 ├── ROADMAP.md                   # Forward look
-├── .gitignore
-├── .editorconfig
 │
-├── /workflows/                  # The heart of the repository
-│   ├── /image-generation/
-│   │   └── /comfyui-character-design/
-│   ├── /motion-capture/
-│   │   └── /webcam-previs/
-│   ├── /text/
-│   │   └── /rag-research-assistant/
-│   └── /audio/
-│       └── /voice-synthesis/
+├── workflows/                   # The heart of the repository
+│   ├── image-generation/
+│   │   └── comfyui-character-design/
+│   ├── motion-capture/
+│   │   └── webcam-previs/
+│   ├── text/
+│   │   └── rag-research-assistant/
+│   └── audio/
+│       └── voice-synthesis/
 │
-├── /tools/                      # The launcher and runtime
-│   ├── /sandbox/                # CLI + launcher
-│   ├── /assistant/              # LLM assistant (RAG over repo)
-│   ├── /validators/             # Metadata schema validation
-│   └── /provenance/             # Development provenance automation
-│       └── archive_prompt.py    # Prompt archiving helper
+├── tools/                       # The launcher and runtime
+│   ├── sandbox/                 # CLI + launcher
+│   ├── assistant/               # LLM assistant (RAG over repo)
+│   ├── validators/              # Metadata schema validation
+│   └── provenance/              # Development provenance automation
 │
-├── /sandbox-ui/                 # NiceGUI front-end
-│   ├── /pages/
-│   ├── /components/
-│   └── app.py
+├── sandbox-ui/                  # NiceGUI front-end
 │
-├── /guides/                     # Discipline-specific guidance
+├── guides/                      # Discipline-specific guidance
 │   ├── filmmaking.md
 │   ├── games.md
 │   ├── vr-immersive.md
@@ -121,87 +121,121 @@ soda-streams/
 │   ├── fine-art.md
 │   └── research.md
 │
-├── /provenance/                 # Attribution patterns, licence templates
-│   ├── model-licences.md
-│   ├── dataset-provenance.md
-│   └── attribution-template.md
+├── provenance/                  # Attribution patterns, licence templates
 │
-├── /docs/                       # Project documentation
+├── docs/                        # Project documentation
 │   ├── DESIGN.md
 │   ├── BLUEPRINT.md
 │   ├── DEVOPS.md
 │   ├── DEVELOPMENT.md
-│   └── /adr/                    # Architecture Decision Records
+│   └── adr/                     # Architecture Decision Records
 │
-├── /prompts/                    # OpenCode prompt archive (COMMITTED)
-│   ├── README.md
-│   ├── /brick-00-provenance-infrastructure/
-│   ├── /brick-01-repo-skeleton/
-│   └── ...
-│
-├── /logs/                       # Development logs (GITIGNORED except README)
-│   ├── README.md
-│   └── /opencode/
-│       └── README.md
-│
-├── /tests/                      # Test suite
-│   ├── test_metadata_validation.py
-│   ├── test_launcher.py
-│   ├── test_assistant_rag.py
-│   ├── /fixtures/
-│   └── /workflows/
-│
-├── /.opencode/                  # OpenCode project configuration (COMMITTED)
-│   ├── config.json
-│   ├── /agents/
-│   │   ├── brick-implementer.md
-│   │   └── reviewer.md
-│   └── /commands/
-│       └── new-brick.md
-│
-└── /.github/                    # CI/CD, templates
-    ├── /workflows/
-    │   └── validate.yml
-    ├── /ISSUE_TEMPLATE/
-    │   ├── bug-report.md
-    │   ├── workflow-submission.md
-    │   └── tier-promotion.md
-    └── PULL_REQUEST_TEMPLATE.md
+├── prompts/                     # Development provenance (committed)
+├── logs/                        # Development logs (gitignored)
+├── tests/                       # Test suite
+├── .opencode/                   # OpenCode project configuration
+└── .github/                     # CI/CD, templates
 ```
 
-## Design Principles
+## Quick start
 
-- **Porous edges.** Low-friction access. GitHub-based contribution. No maze
-  of permissions. Anyone at SODA can browse, run, and fork a workflow
-  without asking.
-- **Defined boundaries.** A metadata schema. A three-tier system. A
-  governance framework. Not to prevent exploration, but to make it safe.
-- **Prepared cleanup.** Provenance tracking. Incident response. Clear
-  escalation paths. We expect some sand to fall outside the box — the
-  question is whether we're ready when it does.
-- **Make the meal, not the menu.** Every workflow is a complete, runnable
-  thing — not a tutorial, not a diagram, not a link to a tool. The user can
-  run it, modify it, and extend it.
+### Prerequisites
 
-## Three-Tier System
+- Python 3.11+
+- Git
+- (Optional) [Ollama](https://ollama.com) for local LLM inference
 
-All workflows live on `main`. Tiers are metadata fields and GitHub labels —
-not git branches.
+### Installation
 
-| Tier | Reviewed | Supported | Who governs |
-|---|---|---|---|
-| **Curated** | Yes — by Technical Specialist + discipline staff | Yes | Institution |
-| **Community** | No — but metadata validated | No — best effort | Contributors |
-| **Experimental** | No | No | No one |
+```bash
+git clone https://github.com/Git-Lister/soda-streams.git
+cd soda-streams
+python -m venv .venv
+source .venv/bin/activate      # or .venv\Scripts\activate on Windows
+pip install pyyaml jsonschema ruff pytest
+```
+
+### Browse workflows
+
+```bash
+# List all available workflows
+python -m tools.sandbox.cli list
+
+# Filter by tier
+python -m tools.sandbox.cli list --tier curated
+
+# Filter by discipline
+python -m tools.sandbox.cli list --discipline games
+```
+
+### Inspect a workflow
+
+```bash
+python -m tools.sandbox.cli info comfyui-character-design
+```
+
+### Run a workflow
+
+```bash
+python -m tools.sandbox.cli run comfyui-character-design
+```
+
+### Validate metadata
+
+```bash
+# Validate a specific workflow's metadata
+python -m tools.sandbox.cli validate workflows/image-generation/comfyui-character-design/metadata.yaml
+
+# Validate every workflow in the repository
+python tools/validators/validate_all.py
+```
+
+## Contributing
+
+Workflows come in three tiers — curated, community, and experimental.
+Each has different requirements. See [CONTRIBUTING.md](CONTRIBUTING.md)
+for the full process, and [GOVERNANCE.md](GOVERNANCE.md) for the
+tier definitions.
+
+Every workflow must include a `metadata.yaml` that validates against
+the schema in `tools/validators/schema.json`. The schema is enforced
+in CI.
+
+## Governance
+
+Governance is light-touch and ground-up. Community and experimental
+workflows require no approval. Curated workflows are reviewed for
+safety, licensing, and provenance.
+
+See [GOVERNANCE.md](GOVERNANCE.md) for the tier system, review
+process, escalation path, and incident response.
+
+## Licensing
+
+- **Code:** MIT — see [LICENSE](LICENSE)
+- **Content (guides, documentation, examples):** CC-BY 4.0
+- **Workflows:** contributor's choice, declared in `metadata.yaml`
+- **Models and datasets:** licence recorded per workflow in `provenance`
+
+## Provenance
+
+Every workflow declares its provenance: models used, datasets used,
+licences, and (where applicable) the AI assistance used to build the
+workflow itself. This isn't decoration — it's the foundation of the
+repository's approach to responsible AI.
 
 ## Links
 
 - [Contributing](CONTRIBUTING.md)
 - [Governance](GOVERNANCE.md)
-- [Licence](LICENSE)
-- [Security](SECURITY.md)
 - [Code of Conduct](CODE_OF_CONDUCT.md)
-- [Development Guide](docs/DEVELOPMENT.md)
-- [Blueprint](docs/BLUEPRINT.md)
-- [DevOps](docs/DEVOPS.md)
+- [Security](SECURITY.md)
 - [Design](docs/DESIGN.md)
+- [Blueprint](docs/BLUEPRINT.md)
+- [Development Guide](docs/DEVELOPMENT.md)
+- [DevOps](docs/DEVOPS.md)
+- [Roadmap](ROADMAP.md)
+- [Development Log](DEVLOG.md)
+```
+
+---
