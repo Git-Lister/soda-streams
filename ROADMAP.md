@@ -5,9 +5,9 @@
 - [x] Repository skeleton
 - [x] Full repository scaffold
 - [x] Metadata schema
+- [x] Launcher CLI
 
 ## Next
-- [ ] Launcher CLI
 - [ ] ComfyUI workflow
 - [ ] RAG workflow
 - [ ] Audio workflow

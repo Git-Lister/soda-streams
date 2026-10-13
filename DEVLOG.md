@@ -1,5 +1,21 @@
 # Development Log
 
+## 2026-10-12 — Brick 3: Launcher CLI
+
+**Built:** The `sandbox` launcher CLI with four commands (list, info,
+run, validate). Reads workflow metadata, filters by tier and discipline,
+dispatches to workflow entry points.
+
+**Learned:** The find_workflows + filter pattern cleanly separates
+discovery from filtering. importlib.util.spec_from_file_location is the
+correct way to load workflow modules without sys.path manipulation.
+Placeholder workflows are skipped at discovery time, so info/run correctly
+return "not found" until Brick 4 fills them.
+
+**Changed:** None — implementation follows the spec exactly.
+
+**Next:** Brick 4 (ComfyUI character design workflow).
+
 ## 2026-10-12 — Brick 2: Metadata schema and validator
 
 **Built:** JSON Schema for workflow metadata, Python validator
