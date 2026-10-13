@@ -6,9 +6,10 @@
 - [x] Full repository scaffold
 - [x] Metadata schema
 - [x] Launcher CLI
+- [x] ComfyUI workflow
 
 ## Next
-- [ ] ComfyUI workflow
+- [ ] RAG workflow
 - [ ] RAG workflow
 - [ ] Audio workflow
 - [ ] MediaPipe workflow

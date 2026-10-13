@@ -18,13 +18,13 @@ def format_result(result: ValidationResult) -> str:
         A formatted string for terminal output.
     """
     if result.status == "valid":
-        return f"✓ valid: {result.path}"
+        return f"  \u2713 valid: {result.path}"
     if result.status == "skipped":
-        return f"- skipped: {result.path}"
+        return f"  - skipped: {result.path}"
     # invalid
-    lines = [f"✗ invalid: {result.path}"]
+    lines = [f"  \u2717 invalid: {result.path}"]
     for error in result.errors:
-        lines.append(f"  - {error}")
+        lines.append(f"    - {error}")
     return "\n".join(lines)
 
 
@@ -38,6 +38,9 @@ def main(argv: list[str] | None = None) -> int:
     Returns:
         0 if no invalid results, 1 otherwise.
     """
+    if sys.stdout.encoding and sys.stdout.encoding.lower() != "utf-8":
+        sys.stdout.reconfigure(encoding="utf-8")
+
     if argv is None:
         argv = sys.argv
 

@@ -1,11 +1,37 @@
-# PLACEHOLDER — filled in Brick 4.
-# The metadata validator (Brick 2) will skip files whose first line is
-# `# PLACEHOLDER`.
-
-name: "ComfyUI Character Design"
+name: "Character Design with ComfyUI"
 slug: "comfyui-character-design"
-tier: "experimental"
-discipline: []
-description: "Placeholder — to be documented in Brick 4."
-version: "0.0.1"
+author: "Git-Lister"
+tier: "curated"
+discipline:
+  - "games"
+  - "filmmaking"
+  - "fine-art"
+description: "Generate character concept art with Stable Diffusion XL via ComfyUI. Iterate on designs before committing time in 3D or 2D tooling."
+version: "1.0.0"
 licence: "MIT"
+tools:
+  - name: "ComfyUI"
+    version: ">=0.2.0"
+    source: "https://github.com/comfyanonymous/ComfyUI"
+    licence: "GPL-3.0"
+  - name: "Stable Diffusion XL Base"
+    version: "1.0"
+    source: "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
+    licence: "CreativeML-Open-RAIL++-M"
+dependencies:
+  - "requests>=2.31.0"
+  - "websocket-client>=1.7.0"
+entry_point: "workflow.py:main"
+runtime: "python"
+provenance:
+  models:
+    - name: "SDXL Base 1.0"
+      source: "Stability AI"
+      licence: "CreativeML-Open-RAIL++-M"
+      training_data: "LAION-5B (per Stability AI model card)"
+  ai_assistance:
+    - tool: "OpenCode (Nemotron 3 Ultra)"
+      role: "code generation"
+created: "2026-10-13"
+updated: "2026-10-13"
+contributor_handle: "Git-Lister"

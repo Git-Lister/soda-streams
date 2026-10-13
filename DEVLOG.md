@@ -1,5 +1,21 @@
 # Development Log
 
+## 2026-10-13 — Brick 4: ComfyUI character design workflow
+
+**Built:** First content workflow. ComfyUI + SDXL character design with
+a real workflow.json, a Python HTTP client, discipline guide, and smoke
+tests. Metadata validates as curated tier with full provenance.
+
+**Learned:** The separation between workflow.py (client logic) and
+workflow.json (ComfyUI graph) is clean — the Python side only needs to
+know the prompt node IDs. The metadata validator's placeholder skipping
+means the repo can mix real and placeholder workflows without false
+positives.
+
+**Changed:** None — implementation follows the spec exactly.
+
+**Next:** Brick 5 (RAG research assistant workflow).
+
 ## 2026-10-12 — Brick 3: Launcher CLI
 
 **Built:** The `sandbox` launcher CLI with four commands (list, info,
